@@ -61,7 +61,10 @@ var TodoApp = React.createClass({
 	    		var allItems = [];
 	    		var self = this;
 	    		this.props.items.forEach(function(item,index){
-	    			allItems.push(<div key={"item"+index}><input type='checkbox' id={index} onClick={self.props.completedItemEvent} /><span>{self.props.items[index].item}</span></div>);
+	    			if(item.status)
+	    				allItems.push(<div key={"item"+index}><input type='checkbox' id={index} onClick={self.props.completedItemEvent} defaultChecked/><span>{self.props.items[index].item}</span></div>);
+	    			else
+	    				allItems.push(<div key={"item"+index}><input type='checkbox' id={index} onClick={self.props.completedItemEvent} /><span>{self.props.items[index].item}</span></div>);			
 	    		});
 	    		console.log(allItems);
 	    		return allItems;
